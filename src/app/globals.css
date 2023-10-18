@@ -1,5 +1,54 @@
 main{
   align-items: center;
   background-color: crimson;
-  color: darkgrey;
+  color: black;
+
+}
+
+.inputComponent {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  max-width: 30%;
+  margin-bottom: 2%;
+  padding-left: 35%;
+}
+
+.clientHeaderButtons{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  max-width: 30%;
+  margin-bottom: 2%;
+  padding-left: 35%;
+}
+
+.inputName{
+padding-bottom: 2%;
+margin-bottom: 8%;
+}
+
+.inputAddress{
+  padding-bottom: 2%;
+}
+
+.addButton{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.resetButton{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.topClientList{
+  display: flex;
+  justify-content: center;
+}
+
+.nameTopClientList{
+  margin-right: 4%;
 }

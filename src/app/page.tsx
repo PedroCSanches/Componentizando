@@ -1,30 +1,47 @@
 "use client"
 import { useState } from 'react'
-import Profile from "../components/client";
-import Buttons from '@/components/buttons';
+import ClientHeader from "../components/clientHeader";
+import ClientList from "../components/clientList";
+
+{/* tipo do array */}
+export type clientType = {
+  name:string
+  address:string
+}
 
 
 
 export default function Home() {
 
+  const [clientDataList , setClientDataList] = useState<Array<clientType>>([
+    {
+        name: "Pedro",
+        address: "Rua Carlos Eduardo, 204"
+    },
+    {
+      name: "Luis",
+      address: "Rua Colombia, 26"
+    },
+    {
+      name: "Bernardo",
+      address: "Rua Capinas , 100" 
+    },
 
+  ])
 
+function removeClient(index:number) {
+  clientDataList.splice(index,1)
+
+  setClientDataList([...clientDataList])
+} 
 
   return (
     <main >
-      <Profile name="Pedroo" address="Rua Eduardo Cardoso,204" />
-      <Buttons/>
+      <ClientHeader />
 
-       {/* topo lista */}
-    <div className='list'>
+      <ClientList  clientDataList={clientDataList} removeClient={removeClient}/>
 
-      <div className='topList'></div>
 
-      <div className='nameTopList'>Name</div>
-
-      <div className='addressTopList'>CPF</div>
-
-    </div>
     </main>
   )
 }

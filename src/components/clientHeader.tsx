@@ -3,17 +3,17 @@ import { useState, ChangeEvent } from 'react'
 import * as React from 'react';
 
 
-{/* tipo do array */}
-type ProfileProps = {
-    name:string
-    address:string
-}
 
-const Profile = ({name, address}:ProfileProps) => {
+
+const ClientHeader = () => {
+
   const [inputName, setInputName] = useState("")
+
   const [inputAddress, setInputAddress] = useState("")
 
-{/*const [client , setClient] = useState<Array<ProfileProps>>([])*/}
+
+  
+
   function saveName(inputElement: ChangeEvent<HTMLInputElement>) {
     setInputName(inputElement.target.value)
   }
@@ -24,14 +24,27 @@ const Profile = ({name, address}:ProfileProps) => {
 
   return (
     <main>
-      <div>
-      <input type="text" onChange={saveName}/>   
-      <input type="text" onChange={saveAddress}/>
-    </div>
+      <div className='inputComponent'>
+      Nome:<input className='inputName' type="text" onChange={saveName}/>   
+      Endereço:<input className='inputAddress' type="text" onChange={saveAddress}/>
+
+        </div>
+
+        <div className='clientHeaderButtons'>
+        <button className='addButton'>+</button>
+
+        <button className='resetButton'>🔄</button>
+        </div>
+      
+
+
+      
+        
+
    
     </main>
   )
 };
 
-export default Profile;
+export default ClientHeader;
 
