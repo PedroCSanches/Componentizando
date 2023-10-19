@@ -3,6 +3,7 @@ import { useState } from 'react'
 import ClientHeader from "../components/clientHeader";
 import ClientList from "../components/clientList";
 
+
 {/* tipo do array */}
 export type clientType = {
   name:string
@@ -12,6 +13,7 @@ export type clientType = {
 
 
 export default function Home() {
+
 
   const [clientDataList , setClientDataList] = useState<Array<clientType>>([
     {
@@ -29,6 +31,10 @@ export default function Home() {
 
   ])
 
+function addClient() {
+  
+}
+
 function removeClient(index:number) {
   clientDataList.splice(index,1)
 
@@ -37,7 +43,8 @@ function removeClient(index:number) {
 
   return (
     <main >
-      <ClientHeader />
+
+      <ClientHeader addClient={addClient} />
 
       <ClientList  clientDataList={clientDataList} removeClient={removeClient}/>
 

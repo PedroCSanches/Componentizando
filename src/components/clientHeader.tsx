@@ -3,16 +3,18 @@ import { useState, ChangeEvent } from 'react'
 import * as React from 'react';
 
 
+type clientHeaderProps = {
+  addClient:(name:string , address:string) => void
 
+}
 
-const ClientHeader = () => {
+const ClientHeader = ({addClient} : clientHeaderProps) => {
 
   const [inputName, setInputName] = useState("")
 
   const [inputAddress, setInputAddress] = useState("")
 
 
-  
 
   function saveName(inputElement: ChangeEvent<HTMLInputElement>) {
     setInputName(inputElement.target.value)
@@ -31,9 +33,9 @@ const ClientHeader = () => {
         </div>
 
         <div className='clientHeaderButtons'>
-        <button className='addButton'>+</button>
+        <button className='addButton' onClick={() => addClient}>+</button>
 
-        <button className='resetButton'>🔄</button>
+        <button className='resetButton' >🔄</button>
         </div>
       
 
