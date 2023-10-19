@@ -1,13 +1,16 @@
 "use client "
-import { clientType } from '@/app/page'
+import { clientType } from '@/common/types'
 import { useState } from 'react'
 
 type clientPropsType = {
     clientDataList:Array<clientType>
     removeClient:(index:number) => void
+
 }
 
 export default function clientList({clientDataList,removeClient}: clientPropsType) {
+
+
 
 
     return (
