@@ -5,16 +5,15 @@ import * as React from 'react';
 
 
 type clientHeaderProps = {
-  addClient:(name:string , address:string) => void
-  selectedClient:Array<clientType>
+  addClient: (name:string , address:string) => void
+  selectedClient: clientType | null
 }
 
-const ClientHeader = ({selectedClient,addClient} : clientHeaderProps) => {
+const ClientHeader = ({selectedClient, addClient} : clientHeaderProps) => {
 
   const [inputName, setInputName] = useState("")
 
   const [inputAddress, setInputAddress] = useState("")
-
 
 
   function saveName(inputElement: ChangeEvent<HTMLInputElement>) {
@@ -34,6 +33,14 @@ const ClientHeader = ({selectedClient,addClient} : clientHeaderProps) => {
     addClient(inputName,inputAddress)
   }
 
+  React.useEffect(()=>{
+    if(selectedClient != null){
+      setInputName(selectedClient.name)
+      setInputAddress(selectedClient.address)
+    }
+
+  }, [selectedClient])
+
   return (
     <main>
       <div className='inputComponent'>
@@ -43,8 +50,8 @@ const ClientHeader = ({selectedClient,addClient} : clientHeaderProps) => {
         </div>
 
         <div className='clientHeaderButtons'>
-        <button className='addButton' onClick={addNewClient}>+</button>
-        <button className='editbutton'>edit</button>
+        {selectedClient ==null && <button className='addButton' onClick={addNewClient}>+</button>}
+        {selectedClient != null  && <button className='editbutton'>edit</button>}
 
         <button className='resetButton' onClick={reset}>🔄</button>
         </div>

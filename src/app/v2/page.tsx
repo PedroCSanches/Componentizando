@@ -45,7 +45,7 @@ function edit(index:number) {
     
       <Link href='/'>Home</Link>
 
-      <ClientHeader addClient={addClient} selectedClient={}  />
+      <ClientHeader addClient={addClient} selectedClient={selectedClient}  />
 
       <ClientList  clientDataList={clientDataList} removeClient={removeClient} />
 
