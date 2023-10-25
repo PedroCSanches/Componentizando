@@ -5,10 +5,11 @@ import { useState } from 'react'
 type clientPropsType = {
     clientDataList:Array<clientType>
     removeClient:(index:number) => void
+    edit: (index:number) => void
 
 }
 
-export default function clientList({clientDataList,removeClient}: clientPropsType) {
+export default function clientList({clientDataList,removeClient,edit}: clientPropsType) {
 
 
 
@@ -39,6 +40,7 @@ export default function clientList({clientDataList,removeClient}: clientPropsTyp
 
        <div  className='actions'>
             <button onClick={() => removeClient(index)}>delete</button>
+            <button onClick={() => edit(index)}>editar</button>
        </div>
      </div>
 

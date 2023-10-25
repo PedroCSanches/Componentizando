@@ -7,9 +7,10 @@ import * as React from 'react';
 type clientHeaderProps = {
   addClient: (name:string , address:string) => void
   selectedClient: clientType | null
+  saveEdit: (name:string , address:string) => void 
 }
 
-const ClientHeader = ({selectedClient, addClient} : clientHeaderProps) => {
+const ClientHeader = ({selectedClient, addClient, saveEdit} : clientHeaderProps) => {
 
   const [inputName, setInputName] = useState("")
 
@@ -33,6 +34,8 @@ const ClientHeader = ({selectedClient, addClient} : clientHeaderProps) => {
     addClient(inputName,inputAddress)
   }
 
+
+
   React.useEffect(()=>{
     if(selectedClient != null){
       setInputName(selectedClient.name)
@@ -40,6 +43,12 @@ const ClientHeader = ({selectedClient, addClient} : clientHeaderProps) => {
     }
 
   }, [selectedClient])
+
+  function editclientHeader() {
+    saveEdit( inputName , inputAddress)
+    console.log("passei no header")
+  }
+
 
   return (
     <main>
@@ -51,7 +60,7 @@ const ClientHeader = ({selectedClient, addClient} : clientHeaderProps) => {
 
         <div className='clientHeaderButtons'>
         {selectedClient ==null && <button className='addButton' onClick={addNewClient}>+</button>}
-        {selectedClient != null  && <button className='editbutton'>edit</button>}
+        {selectedClient != null  && <button className='editbutton' onClick={editclientHeader} >edit</button>}
 
         <button className='resetButton' onClick={reset}>🔄</button>
         </div>

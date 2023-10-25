@@ -16,6 +16,8 @@ export default function v2() {
 
   const [selectedClient , setSelectedClient] = useState<clientType | null>(null)
 
+  const [selectedIndex , setSelectedIndex] = useState(-1)
+
   function addClient(name:string, address:string) {
 
     clientDataList.push({
@@ -24,6 +26,7 @@ export default function v2() {
     })
 
     setClientDataList([...clientDataList])
+    
 }
 
 function removeClient(index:number) {
@@ -34,10 +37,16 @@ function removeClient(index:number) {
 
 function edit(index:number) {
 
-  setSelectedClient(clientDataList[index])
+  setSelectedIndex(index)
+}
 
+function saveEdit(name:string , address:string) {
+  clientDataList[selectedIndex] = { name , address}
 
+  setClientDataList([...clientDataList])
 
+  setSelectedIndex(-1)
+  console.log("passei no page")
 }
 
   return (
@@ -45,9 +54,9 @@ function edit(index:number) {
     
       <Link href='/'>Home</Link>
 
-      <ClientHeader addClient={addClient} selectedClient={selectedClient}  />
+      <ClientHeader addClient={addClient} selectedClient={clientDataList[selectedIndex]}  saveEdit={saveEdit} />
 
-      <ClientList  clientDataList={clientDataList} removeClient={removeClient} />
+      <ClientList  clientDataList={clientDataList} removeClient={removeClient} edit={edit}/>
 
 
     </main>
